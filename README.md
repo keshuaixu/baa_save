@@ -1,12 +1,12 @@
 # baa_save 🐑
 
-Ultra-fast MATLAB writer for NumPy `.npy` files on Windows. Faster than `save`.
+Ultra-fast MATLAB writer for NumPy `.npy` files on Windows. ~25x faster than `save`.
 
 ## Installation (Windows)
 
 Latest release toolbox package:
 
-- `https://github.com/keshuaixu/baa_save/releases/latest/download/baa_save_win64.mltbx`
+- [baa_save_win64.mltbx](https://github.com/keshuaixu/baa_save/releases/latest/download/baa_save_win64.mltbx)
 
 1. Download `baa_save_win64.mltbx` from the link above.
 2. Double-click the `.mltbx` file, then click **Install** in MATLAB.
@@ -33,13 +33,13 @@ Array used:
 - Type: `int16`
 - Payload size: `1,073,741,824` bytes (`1.00 GiB`)
 
-Measured on a shitty machine with SATA SSD (single run, MATLAB `R2025b Update 3`, with `pause(10)` between writes):
+Measured on a modest machine with PCIE SSD (single run, MATLAB `R2025b Update 3`, with `pause(10)` between writes):
 
 | Method | Time (s) | Write speed (MB/s) |
 |---|---:|---:|
-| `save(file, "A")` | 13.8440 | 77.654 |
-| `save(file, "A", "-v7.3")` | 20.1230 | 53.418 |
-| `baa_save(A, file)` | 3.4034 | 315.49 |
+| `save(file, "A")` | 22.946 | 46.851 |
+| `save(file, "A", "-v7.3")` | 35.442 | 30.33 |
+| `baa_save(A, file)` | 0.8575 | 1252.2 |
 
 
 ## API
@@ -67,19 +67,17 @@ The implementation writes MATLAB memory directly and sets `fortran_order: True`,
 
 ## Supported MATLAB classes
 
-| MATLAB class | NumPy `descr` |
-|---|---|
-| `double` | `'<f8'` |
-| `single` | `'<f4'` |
-| `int8` | `'|i1'` |
-| `uint8` | `'|u1'` |
-| `int16` | `'<i2'` |
-| `uint16` | `'<u2'` |
-| `int32` | `'<i4'` |
-| `uint32` | `'<u4'` |
-| `int64` | `'<i8'` |
-| `uint64` | `'<u8'` |
-| `logical` | `'|b1'` |
+- `double`
+- `single`
+- `int8`
+- `uint8`
+- `int16`
+- `uint16`
+- `int32`
+- `uint32`
+- `int64`
+- `uint64`
+- `logical`
 
 ## Not supported
 
