@@ -1,5 +1,7 @@
 # baa_save 🐑
 
+<img src="icon.png" alt="baa_save icon" width="140" />
+
 Ultra-fast MATLAB writer for NumPy `.npy` files on Windows. ~25x faster than `save`.
 
 ## Installation (Windows)
