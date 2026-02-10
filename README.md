@@ -2,6 +2,21 @@
 
 Ultra-fast MATLAB writer for NumPy `.npy` files on Windows. Faster than `save`.
 
+## Installation (Windows)
+
+Latest release toolbox package:
+
+- `https://github.com/keshuaixu/baa_save/releases/latest/download/baa_save_win64.mltbx`
+
+1. Download `baa_save_win64.mltbx` from the link above.
+2. Double-click the `.mltbx` file, then click **Install** in MATLAB.
+
+Verify installation:
+
+```matlab
+which baa_save
+```
+
 ## Benchmark (1 GiB `int16`, 2D)
 
 Benchmark script: `benchmark_save.m`
