@@ -1,6 +1,31 @@
-# baa_save
+# baa_save 🐑
 
-Ultra-fast MATLAB MEX writer for NumPy `.npy` files on Windows.
+Ultra-fast MATLAB writer for NumPy `.npy` files on Windows. Faster than `save`.
+
+## Benchmark (1 GiB `int16`, 2D)
+
+Benchmark script: `benchmark_save.m`
+
+Run from MATLAB:
+
+```matlab
+benchmark_save
+```
+
+Array used:
+
+- Shape: `16384 x 32768` (2D)
+- Type: `int16`
+- Payload size: `1,073,741,824` bytes (`1.00 GiB`)
+
+Measured on a shitty machine with SATA SSD (single run, MATLAB `R2025b Update 3`, with `pause(10)` between writes):
+
+| Method | Time (s) | Write speed (MB/s) |
+|---|---:|---:|
+| `save(file, "A")` | 13.8440 | 77.654 |
+| `save(file, "A", "-v7.3")` | 20.1230 | 53.418 |
+| `baa_save(A, file)` | 3.4034 | 315.49 |
+
 
 ## API
 
@@ -115,31 +140,6 @@ This writes `.npy` files and validates readback with `numpy.load` for:
 - `int16` array
 - `double` array
 
-## Benchmark (1 GiB `int16`, 2D)
-
-Benchmark script: `benchmark_save.m`
-
-Run from MATLAB:
-
-```matlab
-benchmark_save
-```
-
-Array used:
-
-- Shape: `16384 x 32768` (2D)
-- Type: `int16`
-- Payload size: `1,073,741,824` bytes (`1.00 GiB`)
-
-Measured on this machine (single run, MATLAB `R2025b Update 3`, with `pause(10)` between writes):
-
-| Method | Time (s) | Output bytes | Write speed (MB/s) |
-|---|---:|---:|---:|
-| `save(file, "A")` | 13.8440 | 1,075,113,575 | 77.654 |
-| `save(file, "A", "-v7.3")` | 20.1230 | 1,074,896,361 | 53.418 |
-| `baa_save(A, file)` | 3.4034 | 1,073,741,904 | 315.49 |
-
-The benchmark script deletes generated output files when finished and does not persist benchmark number files.
 
 ## Error IDs
 
