@@ -44,21 +44,19 @@ Measured on a modest machine with PCIE SSD (single run, MATLAB `R2025b Update 3`
 | `baa_save(A, file)` | 0.8575 | 1252.2 |
 
 
-## API
+## Usage
 
 ```matlab
-baa_save(a, filename)
+baa_save(a, 'filename.npy')
 ```
 
 - `a`: real, non-sparse numeric or logical MATLAB array.
-- `filename`: MATLAB `char` vector (UTF-16 path).
+- `'filename.npy'`: MATLAB `char` vector (UTF-16 path).
 - No return value.
-
-The implementation writes MATLAB memory directly and sets `fortran_order: True`, so no transpose/copy is needed.
 
 ## Features
 
-- Direct raw payload write from `mxGetData(a)`.
+- Direct zero-copy write.
 - NumPy header with:
   - `descr` mapped from MATLAB type.
   - `fortran_order: True`.
