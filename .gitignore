@@ -1,0 +1,33 @@
+# MATLAB / MEX build outputs
+*.mexw64
+*.mexw32
+*.obj
+*.o
+*.pdb
+*.ilk
+*.lib
+*.exp
+*.log
+
+# MATLAB editor/session artifacts
+*.asv
+*.m~
+slprj/
+
+# Common output artifacts
+out/
+bench_out/
+test_out/
+release/
+release_test/
+*.npy
+*.mltbx
+
+# IDE / tooling
+.vscode/
+.idea/
+.vs/
+
+# OS noise
+Thumbs.db
+Desktop.ini
